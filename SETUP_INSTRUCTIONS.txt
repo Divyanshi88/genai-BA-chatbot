@@ -1,0 +1,194 @@
+===============================================
+BUSINESS STRATEGY GENERATOR - SETUP INSTRUCTIONS
+===============================================
+
+PROJECT STRUCTURE:
+==================
+business-strategy-generator/
+├── app/
+│   ├── __init__.py           (Flask app initialization)
+│   ├── models.py             (Database models)
+│   ├── routes.py             (API endpoints)
+│   ├── validators.py         (Input validation)
+│   ├── gemini_service.py     (Gemini API integration)
+│   ├── templates/
+│   │   └── index.html        (Main UI)
+│   └── static/
+│       ├── css/
+│       │   └── style.css     (Styling)
+│       └── js/
+│           └── app.js        (Frontend logic)
+├── instance/                 (Database storage)
+├── run.py                    (Application entry point)
+├── config.py                 (Configuration)
+├── requirements.txt          (Dependencies)
+├── .env.example             (Environment variables template)
+└── setup.sh                 (Setup script)
+
+
+PREREQUISITES:
+==============
+✓ Python 3.8 or higher installed
+✓ pip (Python package manager)
+✓ Google Cloud Project with Vertex AI API enabled
+✓ Google Cloud credentials configured
+
+
+STEP 1: CLONE/NAVIGATE TO PROJECT
+==================================
+cd /Users/divayanshisharama/Gen\ ai/business-strategy-generator
+
+
+STEP 2: CREATE VIRTUAL ENVIRONMENT
+===================================
+python3 -m venv venv
+source venv/bin/activate
+
+
+STEP 3: INSTALL DEPENDENCIES
+=============================
+pip install -r requirements.txt
+
+
+STEP 4: CONFIGURE GOOGLE CLOUD
+===============================
+1. Copy .env.example to .env:
+   cp .env.example .env
+
+2. Add your Google Cloud Project ID to .env:
+   GOOGLE_CLOUD_PROJECT_ID=your-project-id
+
+3. Set up Google Cloud credentials:
+   - Download service account JSON from Google Cloud Console
+   - Set environment variable:
+     export GOOGLE_APPLICATION_CREDENTIALS=/path/to/credentials.json
+
+   OR use Application Default Credentials:
+     gcloud auth application-default login
+
+
+STEP 5: RUN THE APPLICATION
+============================
+python3 run.py
+
+The app will start at: http://localhost:5000
+
+Open this URL in your web browser.
+
+
+STEP 6: USE THE APPLICATION
+=============================
+1. Fill in the form:
+   - Business Type: (e.g., "AI-Powered Analytics Platform")
+   - Target Audience: (e.g., "Enterprise data analysts")
+   - Problem Statement: (e.g., "Complex data analysis takes too long")
+   - Budget: (e.g., "$100,000 - $500,000")
+
+2. Click "Generate Strategy" button
+
+3. View the AI-generated business strategy report:
+   - Business Strategy
+   - Marketing Plan
+   - Revenue Model
+   - Risk Analysis
+   - Competitor Insights
+   - Full Report
+
+4. Download the report as a text file
+
+5. View and manage previous reports
+
+
+STOPPING THE APPLICATION
+=========================
+Press Ctrl+C in the terminal
+
+
+ENVIRONMENT VARIABLES
+====================
+Edit .env file to customize:
+- FLASK_ENV: development or production
+- FLASK_PORT: Port number (default: 5000)
+- GOOGLE_CLOUD_PROJECT_ID: Your GCP project ID
+
+
+TROUBLESHOOTING
+================
+1. "ModuleNotFoundError: No module named 'google'":
+   → Run: pip install -r requirements.txt
+
+2. "Error calling Gemini API":
+   → Check Google Cloud credentials are set correctly
+   → Ensure Vertex AI API is enabled in GCP Console
+
+3. "Port already in use":
+   → Change FLASK_PORT in .env file
+   → Or kill the process: lsof -i :5000 | kill -9 <PID>
+
+4. Database errors:
+   → Delete instance/business_strategy.db
+   → Restart the application
+
+
+DATABASE
+========
+The app uses SQLite for persistence.
+Database file: instance/business_strategy.db
+
+To reset database:
+1. Stop the application
+2. Delete: rm instance/business_strategy.db
+3. Restart: python3 run.py
+
+
+API ENDPOINTS
+=============
+- POST /api/generate-strategy
+  Generate new business strategy
+
+- GET /api/reports
+  Get all reports
+
+- GET /api/reports/<id>
+  Get specific report
+
+- DELETE /api/reports/<id>
+  Delete a report
+
+
+PRODUCTION DEPLOYMENT
+=====================
+For production use:
+1. Change FLASK_ENV=production in .env
+2. Use a production WSGI server (Gunicorn, etc.)
+3. Set up proper database (PostgreSQL recommended)
+4. Configure HTTPS/SSL
+5. Use environment-specific credentials
+
+
+FEATURES
+========
+✓ AI-powered business strategy generation
+✓ Structured report with multiple sections
+✓ SQLite database for persistence
+✓ Previous reports management
+✓ Input validation
+✓ Error handling
+✓ Responsive UI
+✓ Report download as text file
+✓ Clean, modern interface
+
+
+NEXT STEPS
+==========
+1. Follow the setup steps above
+2. Generate your first business strategy
+3. Explore the generated reports
+4. Customize the application as needed
+
+
+SUPPORT & DOCUMENTATION
+=======================
+- Google Cloud Vertex AI: https://cloud.google.com/vertex-ai
+- Flask Documentation: https://flask.palletsprojects.com
+- SQLAlchemy: https://www.sqlalchemy.org

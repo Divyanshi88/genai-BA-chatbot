@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Strategy Generator | AI-Powered</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Dark Mode Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+        <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+    </button>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">StrategyAI</span>
+                </div>
+                <div class="header-actions">
+                    <span class="badge-pill">✨ AI-Powered</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Form Section -->
+            <section class="input-section" id="inputSection">
+                <div class="section-header">
+                    <h1>Generate Your Strategy</h1>
+                    <p>Tell us about your business and we'll create a comprehensive strategy</p>
+                </div>
+
+                <form id="strategyForm" class="strategy-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="companyName">
+                                <span class="label-icon">🏢</span>
+                                Company Name
+                            </label>
+                            <input 
+                                type="text" 
+                                id="companyName" 
+                                name="company_name" 
+                                placeholder="e.g., Acme Corp"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location">
+                                <span class="label-icon">📍</span>
+                                Location / Geography
+                            </label>
+                            <input 
+                                type="text" 
+                                id="location" 
+                                name="location" 
+                                placeholder="e.g., USA, New York, Global"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="businessType">
+                                <span class="label-icon">🚀</span>
+                                Business Type
+                            </label>
+                            <input 
+                                type="text" 
+                                id="businessType" 
+                                name="business_type" 
+                                placeholder="e.g., SaaS, E-commerce"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="targetAudience">
+                                <span class="label-icon">👥</span>
+                                Target Audience
+                            </label>
+                            <input 
+                                type="text" 
+                                id="targetAudience" 
+                                name="target_audience" 
+                                placeholder="e.g., Young professionals"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="usp">
+                            <span class="label-icon">💎</span>
+                            Unique Selling Proposition (USP)
+                        </label>
+                        <textarea 
+                            id="usp" 
+                            name="usp" 
+                            placeholder="What makes your business special? (optional)..."
+                            rows="2"
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="problemStatement">
+                            <span class="label-icon">🎯</span>
+                            Problem Statement
+                        </label>
+                        <textarea 
+                            id="problemStatement" 
+                            name="problem_statement" 
+                            placeholder="Describe the problem your business solves..."
+                            rows="4"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="budget">
+                            <span class="label-icon">💰</span>
+                            Budget
+                        </label>
+                        <input 
+                            type="text" 
+                            id="budget" 
+                            name="budget" 
+                            placeholder="e.g., $50,000 - $100,000"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="businessStage">
+                            <span class="label-icon">📈</span>
+                            Business Stage
+                        </label>
+                        <select id="businessStage" name="business_stage" required>
+                            <option value="">Select stage</option>
+                            <option value="Idea">Idea / Pre-revenue</option>
+                            <option value="Pre-seed">Pre-seed</option>
+                            <option value="Seed">Seed</option>
+                            <option value="Series A">Series A</option>
+                            <option value="Series B+">Series B or later</option>
+                            <option value="Growth">Growth / Established</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="knownCompetitors">
+                            <span class="label-icon">🏢</span>
+                            Known Competitors
+                        </label>
+                        <textarea 
+                            id="knownCompetitors" 
+                            name="known_competitors" 
+                            placeholder="List your known competitors (optional)..."
+                            rows="2"
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="biggestChallenge">
+                            <span class="label-icon">🚧</span>
+                            Biggest Current Challenge
+                        </label>
+                        <textarea 
+                            id="biggestChallenge" 
+                            name="biggest_challenge" 
+                            placeholder="What is your biggest challenge right now? (optional)..."
+                            rows="2"
+                        ></textarea>
+                    </div>
+
+                    <div id="errorMessages" class="error-container" style="display: none;"></div>
+
+                    <button type="submit" class="btn-generate" id="submitBtn">
+                        <span class="btn-icon">⚡</span>
+                        <span class="btn-text">Generate Strategy</span>
+                        <div class="btn-loading" style="display: none;">
+                            <div class="spinner-small"></div>
+                            <span>Generating...</span>
+                        </div>
+                    </button>
+                </form>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <!-- Sticky Action Bar -->
+                <div class="sticky-bar">
+                    <button class="btn-secondary" onclick="resetForm()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                        New Strategy
+                    </button>
+                    <button class="btn-primary btn-download" onclick="downloadReport()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                        </svg>
+                        Download Report
+                    </button>
+                </div>
+
+                <!-- Loading State -->
+                <div id="loadingSpinner" class="loading-container" style="display: none;">
+                    <div class="loading-animation">
+                        <div class="pulse-ring"></div>
+                        <div class="pulse-ring delay-1"></div>
+                        <div class="pulse-ring delay-2"></div>
+                        <div class="loading-icon">🧠</div>
+                    </div>
+                    <h3>Analyzing your business...</h3>
+                    <p>Our AI is crafting your personalized strategy</p>
+                </div>
+
+                <!-- Results Content -->
+                <div id="resultsContent" style="display: none;">
+                    <!-- Executive Summary Hero -->
+                    <div class="hero-summary" id="heroSummary">
+                        <div class="hero-badge">
+                            <span class="badge-icon">📊</span>
+                            <span>Executive Summary</span>
+                        </div>
+                        <div class="strategy-score">
+                            <span class="score-label">AI Confidence</span>
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: 92%"></div>
+                            </div>
+                            <span class="score-value">92%</span>
+                        </div>
+                        <div class="summary-text" id="summaryContent"></div>
+                        <div class="highlights-grid" id="highlightsList"></div>
+                    </div>
+
+                    <!-- Tab Navigation -->
+                    <div class="tabs-container">
+                        <div class="tabs-nav">
+                            <button class="tab-btn active" data-tab="strategy">
+                                <span class="tab-icon">📋</span>
+                                Strategy
+                            </button>
+                            <button class="tab-btn" data-tab="marketing">
+                                <span class="tab-icon">📢</span>
+                                Marketing
+                            </button>
+                            <button class="tab-btn" data-tab="revenue">
+                                <span class="tab-icon">💰</span>
+                                Revenue
+                            </button>
+                            <button class="tab-btn" data-tab="swot">
+                                <span class="tab-icon">⚡</span>
+                                SWOT
+                            </button>
+                            <button class="tab-btn" data-tab="risks">
+                                <span class="tab-icon">⚠️</span>
+                                Risks
+                            </button>
+                            <button class="tab-btn" data-tab="competitors">
+                                <span class="tab-icon">🏆</span>
+                                Competitors
+                            </button>
+                            <button class="tab-btn" data-tab="roadmap">
+                                <span class="tab-icon">🚀</span>
+                                Roadmap
+                            </button>
+                        </div>
+
+                        <!-- Tab Panels -->
+                        <div class="tab-panels">
+                            <div class="tab-panel active" id="panel-strategy">
+                                <div class="panel-header">
+                                    <h2>📋 Business Strategy</h2>
+                                    <button class="btn-copy" onclick="copySection('strategyContent')" title="Copy to clipboard">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="panel-content" id="strategyContent"></div>
+                            </div>
+
+                            <div class="tab-panel" id="panel-marketing">
+                                <div class="panel-header">
+                                    <h2>📢 Marketing Plan</h2>
+                                    <button class="btn-copy" onclick="copySection('marketingContent')" title="Copy to clipboard">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="panel-content" id="marketingContent"></div>
+                            </div>
+
+                            <div class="tab-panel" id="panel-revenue">
+                                <div class="panel-header">
+                                    <h2>💰 Revenue Model</h2>
+                                    <button class="btn-copy" onclick="copySection('revenueContent')" title="Copy to clipboard">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="panel-content" id="revenueContent"></div>
+                            </div>
+
+                            <div class="tab-panel" id="panel-swot">
+                                <div class="panel-header">
+                                    <h2>⚡ SWOT Analysis</h2>
+                                    <button class="btn-copy" onclick="copySection('swotContent')" title="Copy to clipboard">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="panel-content swot-grid" id="swotContent">
+                                    <div class="swot-item strength">
+                                        <h3>💪 Strengths</h3>
+                                        <ul id="swotStrengths"></ul>
+                                    </div>
+                                    <div class="swot-item weakness">
+                                        <h3>📉 Weaknesses</h3>
+                                        <ul id="swotWeaknesses"></ul>
+                                    </div>
+                                    <div class="swot-item opportunity">
+                                        <h3>🌟 Opportunities</h3>
+                                        <ul id="swotOpportunities"></ul>
+                                    </div>
+                                    <div class="swot-item threat">
+                                        <h3>🔥 Threats</h3>
+                                        <ul id="swotThreats"></ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-panel" id="panel-risks">
+                                <div class="panel-header">
+                                    <h2>⚠️ Risk Analysis</h2>
+                                    <button class="btn-copy" onclick="copySection('riskContent')" title="Copy to clipboard">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 2V4a2 2 0 0 1-2-1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="panel-content" id="riskContent"></div>
+                            </div>
+
+                            <div class="tab-panel" id="panel-competitors">
+                                <div class="panel-header">
+                                    <h2>🏆 Competitor Insights</h2>
+                                    <button class="btn-copy" onclick="copySection('competitorContent')" title="Copy to clipboard">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="panel-content" id="competitorContent"></div>
+                            </div>
+
+                            <div class="tab-panel" id="panel-roadmap">
+                                <div class="panel-header">
+                                    <h2>🚀 30-Day Roadmap</h2>
+                                    <button class="btn-copy" onclick="copySection('roadmapContent')" title="Copy to clipboard">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="panel-content" id="roadmapContent"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Previous Reports -->
+            <section class="previous-section" id="previousReports" style="display: none;">
+                <div class="section-header">
+                    <h2>📚 Previous Strategies</h2>
+                    <p>Your strategy history</p>
+                </div>
+                <div class="reports-timeline" id="reportsList"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
+

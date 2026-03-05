@@ -10,6 +10,10 @@
 [![SQLite](https://img.shields.io/badge/SQLite-Database-003B57?style=for-the-badge&logo=sqlite&logoColor=white)](https://sqlite.org)
 [![License](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)](LICENSE)
 
+<br/>
+
+![Business Strategy Generator Screenshot](https://raw.githubusercontent.com/Divyanshi88/genai-BA-chatbot/main/img/Screenshot%202026-03-04%20at%209.26.12%E2%80%AFAM.png)
+
 </div>
 
 ---

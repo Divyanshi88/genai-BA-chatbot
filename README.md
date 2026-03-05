@@ -25,7 +25,7 @@
 | 🤖 **AI Strategy Generation** | Powered by Google Gemini via Vertex AI |
 | 📊 **Structured Reports** | Strategy · Marketing · Revenue · Risk · Competitors |
 | 💾 **SQLite Persistence** | Save, view, and manage all generated reports |
-| 📥 **Report Download** | Export any report as a `.txt` file |
+| 📥 **Report Download** | Export any report as a `.pdf` file |
 | ✅ **Input Validation** | Clean error handling throughout |
 | 📱 **Responsive UI** | Works on desktop and mobile |
 

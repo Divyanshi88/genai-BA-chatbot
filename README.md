@@ -141,7 +141,7 @@ python3 run.py
    - 🏆 Competitor Insights
    - 📄 Full Report
 
-4. **Download** the report as a `.txt` file or browse previous reports
+4. **Download** the report as a `.pdf` file or browse previous reports
 
 ---
 
